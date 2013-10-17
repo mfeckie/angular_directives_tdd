@@ -1,0 +1,19 @@
+<div class="hero-unit">
+  <h1>Let's figure out how to test a directive</h1>
+  <p>We now have</p>
+  <ul>
+      <li ng-repeat="item in stuff">{{item}}</li>
+  </ul>
+
+  <p>But can we render them with a directive?</p>
+  <p>We can render "Hello world!" with a hello directive</p>
+  <hello></hello>
+  <p>We can also render "Hello world with a URL based template
+  </p>
+  <hello-url></hello-url>
+
+  <p>We can transclude in place text</p>
+  <p>So "a (div)Dave(/div) becomes"</p>
+  <div hello-transclude>Dave</div>
+
+</div>
