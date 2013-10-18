@@ -1,6 +1,6 @@
 'use strict';
 
-var mfApp = angular.module('mfApp', []);
+var mfApp = angular.module('mfApp', ['ngRoute']);
 
 mfApp.config(function ($routeProvider) {
     $routeProvider
