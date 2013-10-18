@@ -32,21 +32,20 @@ mfApp.directive('helloWithInternalFunction', function() {
     template:
       '<div>' + 
         '<div class="scope-title" ng-click="toggle()">Hello </div>' +
-        '<input type="textarea" ng-keyup="countdown()" class="scope-body"/>' +
-    '<div>{{internalCounter}}</div>' +
+        '<input type="textarea" ng-model="characters" ng-keyup="countdown()" class="scope-body"/>' +
+    '<div>{{charactersLeft}}</div>' +
       '</div>',
-    scope: { counter:'@counterstart'},
+    scope: { counter:'=counterstart'},
     link: function(scope, element, attrs) {
       console.log (scope)
       console.log(scope.counter)
       scope.showMe = false;
       scope.internalCounter = scope.counter || 500;
-      //scope.internalCounter = parseInt(scope.counter)
       scope.toggle = function() {
         scope.showMe = !scope.showMe;
       };
       scope.countdown = function () {
-        scope.internalCounter = scope.internalCounter - 1;     
+        scope.charactersLeft = scope.internalCounter - scope.characters.length;     
       };
     }
   }  
