@@ -5,18 +5,31 @@ body {
 }
 
 .hero-unit {
-    margin: 50px auto 0 auto;
-    width: 300px;
+    width: 800px;
     font-size: 18px;
     font-weight: 200;
     line-height: 30px;
     background-color: #eee;
     border-radius: 6px;
-    padding: 60px;
+    padding: 5px;
 }
 
 .hero-unit h1 {
     font-size: 60px;
     line-height: 1;
     letter-spacing: -1px;
+}
+
+.hero-unit h4 {
+  margin-top: 2px;
+}
+
+.example {
+  border-style: solid;
+  border-radius: 5px;
+  padding: 3px;
+  margin-top: 4px;
+  margin-left: 5px;
+  margin-right: 5px;
+  text-align: center;
 }

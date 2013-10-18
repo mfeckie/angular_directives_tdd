@@ -4,17 +4,21 @@
   <ul>
       <li ng-repeat="item in stuff">{{item}}</li>
   </ul>
-
   <p>But can we render them with a directive?</p>
-  <p>We can render "Hello world!" with a hello directive</p>
-  <p><b>&lsaquo;hello&rsaquo;&lsaquo;/hello&rsaquo;</b> becomes:</p>
-  <hello></hello>
-  <p>We can also render "Hello world with a URL based template
-  <p><b>&lsaquo;hello-url&rsaquo;&lsaquo;/hello-url&rsaquo;</b> becomes:</p>
-  </p>
-  <hello-url></hello-url>
-
-  <p>We can transclude in place text</p>
-  <p>So <b>&lsaquo;div hello-transclude &rsaquo;Dave&lsaquo;/div&rsaquo;</b> becomes:</p>
-  <div hello-transclude>Dave</div>
+  <div class="example">
+    <h4>We can render "Hello world!" with a hello directive</h4>
+    <span><b>&lsaquo;hello&rsaquo;&lsaquo;/hello&rsaquo;</b> becomes:</span>
+    <hello></hello>
+  </div>
+  <div class="example">  
+    <h4>We can also render "Hello world!" with a URL based template</h4>
+    <span><b>&lsaquo;hello-url&rsaquo;&lsaquo;/hello-url&rsaquo;</b> becomes:</span>
+    
+    <hello-url></hello-url>
+  </div>
+  <div class="example">  
+    <h4>We can transclude in place text</h4>
+    <span>So <b>&lsaquo;div hello-transclude &rsaquo;Dave&lsaquo;/div&rsaquo;</b> becomes:</span>
+    <div hello-transclude>Dave</div>
+  </div>
 </div>
