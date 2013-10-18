@@ -28,22 +28,25 @@ mfApp.directive('helloWithInternalFunction', function() {
   return {
     restrict: 'EA',
     replace: true,
+    transclude: true,
     template:
       '<div>' + 
         '<div class="scope-title" ng-click="toggle()">Hello </div>' +
         '<input type="textarea" ng-keyup="countdown()" class="scope-body"/>' +
     '<div>{{internalCounter}}</div>' +
       '</div>',
-    scope: { counter:'=counterStart'},
+    scope: { counter:'@counterstart'},
     link: function(scope, element, attrs) {
+      console.log (scope)
+      console.log(scope.counter)
       scope.showMe = false;
-      //scope.counter = 500;
-      scope.internalCounter = parseInt(scope.counter)
+      scope.internalCounter = scope.counter || 500;
+      //scope.internalCounter = parseInt(scope.counter)
       scope.toggle = function() {
         scope.showMe = !scope.showMe;
       };
       scope.countdown = function () {
-        scope.internCounter = scope.internalCounter - 1;     
+        scope.internalCounter = scope.internalCounter - 1;     
       };
     }
   }  
