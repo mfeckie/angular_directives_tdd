@@ -7,13 +7,14 @@
 
   <p>But can we render them with a directive?</p>
   <p>We can render "Hello world!" with a hello directive</p>
+  <p><b>&lsaquo;hello&rsaquo;&lsaquo;/hello&rsaquo;</b> becomes:</p>
   <hello></hello>
   <p>We can also render "Hello world with a URL based template
+  <p><b>&lsaquo;hello-url&rsaquo;&lsaquo;/hello-url&rsaquo;</b> becomes:</p>
   </p>
   <hello-url></hello-url>
 
   <p>We can transclude in place text</p>
-  <p>So "a (div)Dave(/div) becomes"</p>
+  <p>So <b>&lsaquo;div hello-transclude &rsaquo;Dave&lsaquo;/div&rsaquo;</b> becomes:</p>
   <div hello-transclude>Dave</div>
-
 </div>
