@@ -30,12 +30,13 @@ mfApp.directive('helloWithInternalFunction', function() {
     template:
       '<div>' + 
         '<div class="scope-title" ng-click="toggle()">Hello </div>' +
-        '<input type="textarea" ng-model="characters" ng-keyup="countdown()" class="scope-body"/>' +
+        '<input type="textarea" ng-model="characters" ng-change="countdown()" class="scope-body"/>' +
         '<div>{{charactersLeft}}</div>' +
       '</div>',
     scope: { counter:'=counterstart'},
     link: function(scope, element, attrs) {
       scope.internalCounter = scope.counter || 500;
+      scope.charactersLeft = scope.internalCounter;
       scope.countdown = function () {
         scope.charactersLeft = scope.internalCounter - scope.characters.length;     
       }
