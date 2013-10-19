@@ -64,7 +64,7 @@ describe('Unit test of a transcluded directive', function() {
 
 });
 
-describe('Unit test of a directive with internal scope', function() {
+describe('hello-with-internal-function', function() {
   var $compile;
   var $rootScope;
   
@@ -75,32 +75,31 @@ describe('Unit test of a directive with internal scope', function() {
     $rootScope = _$rootScope_;
   }));
   
-  it('Transcludes with an internal scope', function() {
-    var element = $compile("<hello-with-internal-function>Dave</hello-with-internal-function>")($rootScope);
+  it('when counterstart is 20', function() {
+    var element = $compile('<hello-with-internal-function counterstart="20">Dave</hello-with-internal-function>')($rootScope);
     $rootScope.$digest();
-    
-    expect(element.html()).toEqual('<div class="scope-title" ng-click="toggle()">Hello </div><div class="scope-body"' + 
-                                   ' ng-show="showMe" ng-transclude="" style="display: none; "><span class="ng-scope">Dave</span></div>');
-
+    expect(element.html()).toContain('<input type="textarea"');
+    var el = element.find('.scope-body').scope();
+    expect(el.counter).toBe(20);
+    expect(el.internalCounter).toBe(20);
   });
-});
 
-describe('For playing with', function() {
-  var $compile;
-  var $rootScope;
-  
-  beforeEach(module('mfApp'));
-  
-  beforeEach(inject(function(_$compile_, _$rootScope_) {
-    $compile = _$compile_;
-    $rootScope = _$rootScope_;
-  }));
-  
-  it('Transcludes with an internal scope', function() {
-    var element = $compile("<hello-with-internal-function>Dave</hello-with-internal-function>")($rootScope);
+  it('when counterstart is not set', function() {
+    var element = $compile('<hello-with-internal-function>Dave</hello-with-internal-function>')($rootScope);
     $rootScope.$digest();
-    
-    expect(element.html()).toEqual('<div class="scope-title" ng-click="toggle()">Hello </div><div class="scope-body ng-binding" ng-show="showMe" ng-transclude="" style="display: none; ">500<span class="ng-scope">Dave</span></div>');
-
+    var el = element.find('.scope-body').scope();
+    expect(el.counter).toBeUndefined;
+    expect(el.internalCounter).toBe(500);
   });
+
+  it('Counts down', function() {
+    var element = $compile('<hello-with-internal-function counterstart="20">Dave</hello-with-internal-function>')($rootScope);
+    $rootScope.$digest();
+    var el = element.find('.scope-body').scope();
+    expect(el.internalCounter).toBe(20);
+	el.characters = "12345"
+	el.countdown()
+    expect(el.charactersLeft).toBe(15);
+  });
+
 });
