@@ -6,8 +6,6 @@ mfApp.directive('hello', function() {
 	};
 });
 
-// This directive can only be used as an element, not as an attribute of an element.
-
 mfApp.directive('helloUrl', function() {
 	return {
 		restrict: 'E',
@@ -33,20 +31,14 @@ mfApp.directive('helloWithInternalFunction', function() {
       '<div>' + 
         '<div class="scope-title" ng-click="toggle()">Hello </div>' +
         '<input type="textarea" ng-model="characters" ng-keyup="countdown()" class="scope-body"/>' +
-    '<div>{{charactersLeft}}</div>' +
+        '<div>{{charactersLeft}}</div>' +
       '</div>',
     scope: { counter:'=counterstart'},
     link: function(scope, element, attrs) {
-      console.log (scope)
-      console.log(scope.counter)
-      scope.showMe = false;
       scope.internalCounter = scope.counter || 500;
-      scope.toggle = function() {
-        scope.showMe = !scope.showMe;
-      };
       scope.countdown = function () {
         scope.charactersLeft = scope.internalCounter - scope.characters.length;     
-      };
+      }
     }
   }  
 });
